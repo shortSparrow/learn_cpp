@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 4.0)
-project(test)
+project(project13_fun_with_same_names)
 
 set(CMAKE_CXX_STANDARD 20)
 
