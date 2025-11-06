@@ -1,0 +1,8 @@
+#ifndef PROJECT24_RANDOM_BASE_H
+#define PROJECT24_RANDOM_BASE_H
+
+
+void base();
+
+
+#endif //PROJECT24_RANDOM_BASE_H
