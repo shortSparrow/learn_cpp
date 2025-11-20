@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.0)
+project(project32_return_value_by_reference_and_address)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project32_return_value_by_reference_and_address main.cpp)
