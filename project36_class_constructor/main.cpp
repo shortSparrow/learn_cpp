@@ -45,6 +45,16 @@ int main() {
 
         // буде помилка, бо лише один дефолтний constructor дозволений і ми вже створили його вище
         // Foo(int x=0, int y=0) {}
+
+
+        /**
+         * Using = default to generate an explicitly defaulted default constructor
+         * Варто обирати саме такий синтакисис, якщо конструктор буде з порожнім тілом.
+         * Є невелика різниця між конструкторами через defalut, самостійно написаним з порожнім тілом
+         * та відстунім (компілятор напише за нас) у тому, як будуть ініціалізовуватися змінні якщо у них
+         * не вказати ініціаліщатор {}. Але це деталі які я не буду тут описувати, вважатимемо що default - найліпше рішення
+         */
+        // Foo() = default; // generates an explicitly defaulted default constructor
     };
 
 
@@ -60,7 +70,47 @@ int main() {
 
 
 
+    /**
+     * Delegating constructors
+     * Можуть виникнути випадки коли ми викликаємо один конструктор має мало параметрів і має передати якісь дефолтні,
+     * то він може делегувати ініцаілізацію іншому констурктору.
+     *
+     * Тут констуруктор викликається з аршументом "James" і він делегує ініціалізацію змніних іншому конструктору,
+     * передаючи name="James" і id=0
+     *
+     */
 
+    class Employee {
+    private:
+        // у локальному класі static не дозволена, але якби цей клас було створено поза межами main то все було б ок
+        static constexpr int default_id { 0 }; // define a named constant with our desired initialization value
+        std::string m_name { "???" };
+        int m_id { 0 };
+
+    public:
+        Employee(std::string_view name)
+            : Employee{ name, 0 } // delegate initialization to Employee(std::string_view, int) constructor
+        { }
+
+        Employee(std::string_view name, int id)
+            : m_name{ name }, m_id { id } // actually initializes the members
+        {
+            std::cout << "Employee " << m_name << " created\n";
+        }
+
+        /**
+         * Якщо в багатьох констуркторах треба однакове значення аргумента за замовченням, то краще сторити
+         * static змінну і використоувати її
+         */
+        Employee(char name, int id = default_id) // and we can use it here
+            : m_name { name }, m_id { id }
+        {
+            std::cout << "Employee " << m_name << " created\n";
+        }
+    };
+
+    Employee e1{ "James" };       // Employee James created
+    Employee e2{ "Dave", 42 }; // Employee James created
 
     return 0;
 }
