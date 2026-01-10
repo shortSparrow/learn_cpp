@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.1)
+project(temp_task15_calculator_with_function_pointers)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(temp_task15_calculator_with_function_pointers main.cpp)
