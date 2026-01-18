@@ -1,7 +1,29 @@
 #include <algorithm>
 #include <array>
+#include <functional>
 #include <iostream>
 #include <string_view>
+
+
+// returns a lambda
+auto makeWalrus(const std::string& name) {
+  // Capture name by reference and return the lambda.
+  return [&]() {
+    std::cout << "I am a walrus, my name is " << name << '\n'; // Undefined behavior
+  };
+}
+
+// Щоб уникнути проблеми dangling reference краще копіювати дані у lambda якщо не треба їх міняти
+auto makeWalrusSafe(const std::string& name) {
+  return [name]() {
+    std::cout << "I am a walrus, my name is " << name << '\n'; // Ok behavior
+  };
+}
+
+void myInvoke(const std::function<void()>& fn) {
+  fn();
+}
+
 
 int main() {
   /**
@@ -48,6 +70,8 @@ int main() {
    * створюється клон цієї змінної (з ідентичною назвою). Ці клоновані змінні ініціалізуються з зовнішніх
    * змінних того ж імені на цьому етапі.
    * Хоча ці клоновані змінні мають однакову назву, вони не обов'язково мають той самий тип, що й вихідна змінна.
+   *
+   * Capture не потрбіно для static та constexpr змінних
    */
 
   auto found_3{ std::find_if(arr.begin(), arr.end(), [search](std::string_view str) {
@@ -186,9 +210,107 @@ int main() {
 
   //*****************************************************************************
   /**
+   * Dangling captured variables
    * Змінні захоплюються (captured) у лямбда, коли лямбда сторена.
    * Якщо змінна, захоплена як reference, зникає раніше за лямбду, то у лямбді вона залишається з невизначеним (dangling) посиланням.
+   *
+   * Виклик makeWalrus() створює тимчасовий std::string з рядкового літералу "Roofus". Лямбда в makeWalrus() захоплює
+   * тимчасовий рядок за посиланням. Тимчасовий рядок зникає в кінці повного виразу, що містить виклик makeWalrus(),
+   * але лямбда sayName все ще посилається на нього після цього моменту. Таким чином, коли ми викликаємо sayName,
+   * відбувається доступ до dangling reference, що призводить до невизначеної поведінки.
    */
+
+  auto sayName{ makeWalrus("Roofus") };
+  sayName();
+
+
+  //************************ Копії lambda function ***********************************
+  /**
+   * Замість того, щоб вивести 1, 2, 3, код двічі виводить 2.
+   * Коли ми створили otherCount як копію count, ми створили копію count у його поточному стані.
+   * count мав значення i = 1, тому otherCount також має значення i = 1. А потім ми викликаємо
+   * count який збільшує свою внутрішню змінну і otherCount, який збільшує свою
+   */
+  int i { 0 };
+
+  // Create a new lambda named count
+  auto count{ [i]() mutable {
+    std::cout << ++i << '\n';
+  } };
+
+  count(); // 1
+
+  auto otherCount{ count }; // create a copy of count
+
+  // invoke both count and the copy
+  count(); // 2
+  otherCount(); // 2
+
+
+
+  /**
+   * Менш очевидний приклад
+   *
+   * Ми отримаємо вивід 1 три рази, тому що коли ми викликаємо myInvoke(count), компілятор бачить,
+   * що count (який має тип лямбда) не відповідає типу параметра-посилання (std::function<void()>).
+   * Він перетворює лямбду в тимчасову std::function, щоб параметр-посилання міг зв'язатися з нею, і це
+   * створює копію лямбди. Таким чином, наш виклик fn() фактично виконується на копії нашої лямбди,
+   * яка існує як частина тимчасової std::function, а не на самій лямбді.
+   *
+   * Спосіб виправити - це дати тип ляибді такий самий, як і у параметра myInvoke - std::function
+   * Або другий спосіб - це обгорнути count при передачі як аршумент у reference wrapper, який робиться
+   * за допомогою std::ref
+   */
+  int k {0};
+
+  // Increments and prints its local copy of k.
+  auto count2{ [k]() mutable {
+    std::cout << ++k << '\n';
+  } };
+
+  myInvoke(count2); // 1
+  myInvoke(count2); // 1
+  myInvoke(count2); // 1
+
+  myInvoke(std::ref(count2)); // 1
+  myInvoke(std::ref(count2)); // 2
+  myInvoke(std::ref(count2)); // 3
+
+
+  std::function count2Safe{ [k]() mutable { // lambda object stored in a std::function
+    std::cout << ++k << '\n';
+  } };
+
+  myInvoke(count2Safe); // 1
+  myInvoke(count2Safe); // 2
+  myInvoke(count2Safe); // 3
+
+
+  /**
+   * Варто пам'ятати, що lambda function - це не зовсім функції, це об'єкти, і тому якщо їх передавати
+   * як аргумент, то вони будуть копіюватися. Саме тому варто використовувати std::ref, що передедавати їх
+   * як посилання на функцію
+   */
+
+
+
+
+  //*******************************************************
+  /**
+   * Capture змінних відбувається коли функція написана (скомпільована), а не коли викликається
+   */
+  std::string favoriteFruit{ "grapes" };
+
+  auto printFavoriteFruit{
+    [=]() {
+      std::cout << "I like " << favoriteFruit << '\n';
+    }
+  };
+
+  favoriteFruit = "bananas with chocolate";
+
+  printFavoriteFruit(); // I like grapes
+
 
 
   return 0;
