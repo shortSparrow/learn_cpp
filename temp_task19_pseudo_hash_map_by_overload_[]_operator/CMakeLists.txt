@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.1)
+project(temp_task19_pseudo_hash_map_by_overload____operator)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(temp_task19_pseudo_hash_map_by_overload____operator main.cpp)
