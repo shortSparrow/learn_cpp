@@ -63,7 +63,7 @@ int main() {
 
 
 
-    // Цікавий приклад як можна це використати для запуси інформації
+    // Цікавий приклад як можна це використати для запису інформації
     std::cout << "---------INTERESTING CASE---------" << "\n";
     [[maybe_unused]] constexpr std::uint8_t isHungry   { 1 << 0 }; // 0000 0001
     [[maybe_unused]] constexpr std::uint8_t isSad      { 1 << 1 }; // 0000 0010
@@ -83,7 +83,7 @@ int main() {
     std::cout << "I am laughing? " << static_cast<bool>(me & isLaughing) << '\n'; // false
 
 
-    // Цікавий приклад з кльорами, як отримати значення red, greeb, blue, alpha
+    // Цікавий приклад з кольорами, як отримати значення red, green, blue, alpha
     std::cout << "---------PARSE HEX COLORS---------" << "\n";
 
     constexpr std::uint32_t redBits{ 0xFF000000 };

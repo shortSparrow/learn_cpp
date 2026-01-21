@@ -1,7 +1,7 @@
 #include <iostream>
 
 /**
- * Коли ми викликаємо якийсь метод на класі і він оперує з внутрішніми даними то під катопом він
+ * Коли ми викликаємо якийсь метод на класі і він оперує з внутрішніми даними то під капотом він
  * використовує this. This - це pointer який посилається на адресу поточного об'єкту.
  * void print() const { std::cout << m_id; }       // implicit use of this
  * void print() const { std::cout << this->m_id; } // explicit use of this

@@ -5,7 +5,7 @@
 /**
  * Struct - це program-defined type
  * Він потрібний, щоб мати структуру об'єкта, наприклад є employee з 10 полями,
- * от щоб не робити 10 змінних можна все запахти у struct
+ * от щоб не робити 10 змінних можна все запхати у struct
  *
  */
 
@@ -36,7 +36,7 @@ struct Point3d {
 };
 
 
-// Компілятор достатьо розумний щоб зрозуміти що ми стоврюємо struct який зазначений у типі повернення
+// Компілятор достатньо розумний щоб зрозуміти що ми створюємо struct який зазначений у типі повернення
 Point3d getZeroPoint(){
     // We already specified the type at the function declaration
     // so we don't need to do so here again

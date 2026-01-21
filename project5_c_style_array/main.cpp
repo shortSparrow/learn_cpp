@@ -9,13 +9,13 @@ int main() {
     // prime[0] = 17; // compile error: can't change const int
 
 
-    int test_score[30] {}; // сторює масив з 30 елементами, які заповнені дефолтним значенням - 0
+    int test_score[30] {}; // створює масив з 30 елементами, які заповнені дефолтним значенням - 0
     std::cout << test_score[0] << '\n'; // 0
     test_score[0] = 22;
 
     /**
      * Їхня довжина так само як і у std::array, std::vector має тип std::size_t
-     * Але от тип індексb arr[i] навіміну від інших контейнерів у c-style array можуть бути
+     * Але от тип індекс arr[i] на відміну від інших контейнерів у c-style array можуть бути
      * як signed int, так і unsigned int
      */
 
@@ -28,17 +28,17 @@ int main() {
     std::cout << arr[u] << '\n'; // okay to use unsigned index
 
 
-    int fibonnaci[6] {0, 1,1,2,3,5};
+    int fibonacci[6] {0, 1,1,2,3,5};
 
-    for (int item: fibonnaci) {
+    for (int item: fibonacci) {
         std::cout << item << ' ';
     }
     std::cout << '\n';
 
     // Хоча std::size() повертає тип std::size_t тут автоматичне приведення до int схоже працює.
     // Імовірно, тому що немає обмеження на unsigned int, як у std::array
-    for (int i=0; i<std::size(fibonnaci); i++) {
-        std::cout << fibonnaci[i] << ' ';
+    for (int i=0; i<std::size(fibonacci); i++) {
+        std::cout << fibonacci[i] << ' ';
     }
     std::cout << '\n';
 
@@ -57,7 +57,7 @@ int main() {
 
     std::vector<int> prime5 {1,2,3,5,7};
     std::cout << sizeof(prime5) << '\n'; // 24. З std::vector так не працює, повертається розмір типу std::vector
-    std::cout << prime5.size() * sizeof(int) << '\n'; // 20. Треба довжину вектора помножити на розмі типу який він містить
+    std::cout << prime5.size() * sizeof(int) << '\n'; // 20. Треба довжину вектора помножити на розмір типу який він містить
 
 
     std::cout << "****************** Length ***********\n";
@@ -72,7 +72,7 @@ int main() {
     /**
      * C-style arrays don’t support assignment
      * Неочікувано, але C-style arrays не можуть прийняти нове значення після створення, тобто
-     * елементи в них ми можемо міняти, а от замінити повінстю масив (навіть якшо буде однакова довжина) не можемо.
+     * елементи в них ми можемо міняти, а от замінити повністю масив (навіть якшо буде однакова довжина) не можемо.
      */
     int arr_x[] {1,2,3};
     arr_x[0] = 4;
@@ -86,7 +86,7 @@ int main() {
     std::cout << "******************* Copy ***********" << '\n';
     std::copy(std::begin(src), std::end(src), std::begin(arr33));
 
-    // опис того як парцює std::copy
+    // опис того як працює std::copy
     std::cout << &src << '\n'; // 0x2a7fff81c
     std::cout << std::begin(src) << '\n'; // 0x2a7fff81c. Як бачимо, це просто адреса масиву src
 
@@ -105,7 +105,7 @@ int main() {
      *  ++d_first;
      * }
      *
-     * Важливе зауваження: ++first збільшить адерсу не на 1, а на 4, бо воно знає, що це int і він займає 4 byte
+     * Важливе зауваження: ++first збільшить адресу не на 1, а на 4, бо воно знає, що це int і він займає 4 byte
      */
 
     std::cout << "**************** Приклад збільшення pointer *************\n";

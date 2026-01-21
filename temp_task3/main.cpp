@@ -18,7 +18,7 @@ int main() {
     int pennies {};
 
     int value {};
-    cout << "Enter amount in cetns: ";
+    cout << "Enter amount in cents: ";
     cin >> value;
 
     int rest {value};

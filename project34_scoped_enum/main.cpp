@@ -69,7 +69,7 @@ int main() {
     //     std::cout << "The shirt is red!\n";
 
 
-    // Scoped enum не приводяться неявно до int на відміну від uncoped enum
+    // Scoped enum не приводяться неявно до int на відміну від unscoped enum
     // std::cout << (UnscopedColor1::purple == UnscopedColor2::yellow) << '\n'; // 1 - true бо буде 0 == 0
     // std::cout << (Color::red == Fruit::red) << '\n'; // error
     // std::cout << Color::red << '\n'; // буде помилка бо немає неявного приведення до int

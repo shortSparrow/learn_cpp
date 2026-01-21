@@ -19,7 +19,7 @@ void printIDAndValue(T value) {
 }
 
 
-// Template з різними аргументами. Оскільки ми не знаємо занчення якого
+// Template з різними аргументами. Оскільки ми не знаємо значення якого
 // типу будуть більше T чи U, тому нехай повертається auto
 template <typename T, typename U>
 auto max(T x, U y) {
@@ -42,7 +42,7 @@ auto min(T x, U y) -> std::common_type_t<T, U> {
 
 /**
  * Примітка для auto для C++20
- * Коли функція повертає тип auto то компілятор автоматично стоврює template,
+ * Коли функція повертає тип auto то компілятор автоматично створює template,
  * і кожний параметр автоматично стає auto
  *
  * auto super_max(auto x, auto y) {

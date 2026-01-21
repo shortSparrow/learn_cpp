@@ -7,7 +7,7 @@ int main()
     int y {2};
 
     std::array arr1 {x,y}; // містить значення
-    std::array arr2 {&x, &y}; // містить посиланян на змінні
+    std::array arr2 {&x, &y}; // містить посилання на змінні
 
     // arr2[1] = 3; // error Cannot assign to type std::array<int*, 2>::value_type from int
     *(arr2[1]) = 3; // так буде працювати
@@ -41,7 +41,7 @@ int main()
     /**
      * std::ref and std::cref
      * Ці функції існували раніше для того щоб зробити те саме що і std::reference_wrapper але пишучи менше тексту
-     * і вони працюють з auto (раніше я так розумію auto і std::reference_wrapper не зружили)
+     * і вони працюють з auto (раніше я так розумію auto і std::reference_wrapper не дружили)
      *
      * std::cref робить те саме що і std::ref, але додає const
      */

@@ -95,7 +95,7 @@ int main() {
     std::cout << (c1 ^ c2 ^ c3) << "\n"; // 0101
 
 
-    // Bitwise assignment operators (зробили операцію і просвоїли результат змінній)
+    // Bitwise assignment operators (зробили операцію і присвоїли результат змінній)
     /**
      * left shift	<<	x <<= n	the bits in x are shifted left by n positions, new bits are 0.
      * right shift	>>	x >>= n	the bits in x are shifted right by n positions, new bits are 0.
@@ -113,7 +113,7 @@ int main() {
 
     /**
      * ЗАДАЧА
-     * Потрібно зробити функцію rotl, яка буде робити left shiht, але зациклено. Наприклад
+     * Потрібно зробити функцію rotl, яка буде робити left shift, але зациклено. Наприклад
      * Left shift: 0b1001 << 1 -> 0b0010
      * rotl: rotl(0b1001) -> 0b0011
      *

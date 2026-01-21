@@ -164,7 +164,7 @@ int main() {
 
     /**
      * Загальна інформація
-     * Навіщо нам потрбібно аж три варіанти overload
+     * Навіщо нам потрібно аж три варіанти overload
      *
      * Не все може бути перевантажено (overloaded) через friend function
      * The assignment (=), subscript ([]), function call (()), and member selection (->) operators must be overloaded
@@ -178,7 +178,7 @@ int main() {
      *
      *
      *
-     * Ось перелік правил коли який варіант перевантаження (olverload) використовуавти:
+     * Ось перелік правил коли який варіант перевантаження (overload) використовувати:
      * The following rules of thumb can help you determine which form is best for a given situation:
      *  - If you’re overloading assignment (=), subscript ([]), function call (()), or member selection (->), do so as a member function.
      *  - If you’re overloading a unary operator, do so as a member function.

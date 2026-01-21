@@ -14,7 +14,7 @@
  * }
  *
  * double someFunc() {
- *  retuen 1.0;
+ *  return 1.0;
  * }
  *
  * int a = someFunc() - треба міняти на double

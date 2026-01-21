@@ -16,7 +16,7 @@ public:
 
     /**
      * Ми робимо дорогу копію, бо хочемо протестувати як буде виводитися MyString у термінал, в реальності
-     * тут звіно треба повертати std::string або string_view
+     * тут звісно треба повертати std::string або string_view
      *
      * Приклад із поверненням string_view:
      *  std::string_view{ m_str }.substr(start, count)

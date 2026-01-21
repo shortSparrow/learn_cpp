@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
      * Я зробив release build і він знаходиться за адресою
      * C:\Users\formo\OneDrive\Desktop\c++\project45_comand_line_arguments\cmake-build-release\project45_comand_line_arguments.exe
      *
-     * Тож якщо я відкрию термінал і у дерикторії C:\Users\formo\OneDrive\Desktop\c++\project45_comand_line_arguments\cmake-build-release
+     * Тож якщо я відкрию термінал і у директорії C:\Users\formo\OneDrive\Desktop\c++\project45_comand_line_arguments\cmake-build-release
      * і запущу project45_comand_line_arguments (на windows просто напишу в терміналі project45_comand_line_arguments.exe) то побачу терміналі:
      *      1
      *      project45_comand_line_arguments.exe

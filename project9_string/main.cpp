@@ -56,7 +56,7 @@ int main() {
 
 
 
-    // У char також можна записувати числа, вони будуть спрйматися як код у ASCII
+    // У char також можна записувати числа, вони будуть сприйматися як код у ASCII
     // char a {88};
     // cout << a; // X
 
@@ -92,7 +92,7 @@ int main() {
     // // А ні  .size(), а ні .length() не рахують null-terminator (\0 символ, який позначає кінець рядка)
     // std::string empty {};
     // std::string one_char {'a'};
-    // std::string long_str {"abcdefghijklmnopqrstxyz"}; // 23 симолів
+    // std::string long_str {"abcdefghijklmnopqrstxyz"}; // 23 символів
     // std::cout << sizeof(empty) << std::endl; // 32
     // std::cout << empty.size() << std::endl; // 0
     //
@@ -154,7 +154,7 @@ int main() {
     // std::cout << "goo\n"s;  // s suffix is a std::string literal
 
     //
-    // // Наочний приклад чому треба бути обережним з length, оскільки він повертає unsinged int
+    // // Наочний приклад чому треба бути обережним з length, оскільки він повертає unsigned int
     // std::cout << "Enter your full name: ";
     // std::string name{};
     // std::getline(std::cin >> std::ws, name); // read a full line of text into name
@@ -173,9 +173,9 @@ int main() {
     /**
      * std::string_view
      * 1. Створюється змінна s
-     * 2. Свторюється C-style string "Hello, world!"
+     * 2. Створюється C-style string "Hello, world!"
      * 3. "Hello, world!" копіюється у змінну s (повільний процес)
-     * 4. Передаємо s як параметр у printString - отже ще раз копіємо "Hello, world!"
+     * 4. Передаємо s як параметр у printString - отже ще раз копіюємо "Hello, world!"
      * 5. Виводимо  "Hello, world!" у термінал
      *
      * Як видно дуже багато копіювань одного рядку (а це повільна операція!)

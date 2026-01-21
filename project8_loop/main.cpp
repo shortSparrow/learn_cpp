@@ -31,7 +31,7 @@ int main() {
     //     cout << score << endl;
     // }
     //
-    // // В цьому випадку у циклі ми не вказуємо ти score, complier визначить його автоматично
+    // // В цьому випадку у циклі ми не вказуємо ти score, compiler визначить його автоматично
     // vector<double> temperature {33.2,44.12,55.08};
     // double sum_temperature  {0};
     // for (auto temp: temperature) {

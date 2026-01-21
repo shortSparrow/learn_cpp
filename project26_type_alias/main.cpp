@@ -15,7 +15,7 @@ int main() {
 
 
     /**
-     * Typedefs - це страший спосіб сторити alias. Ці два рядки ідентичні
+     * Typedefs - це старий спосіб створити alias. Ці два рядки ідентичні
      *     typedef long Miles;
      *     using Miles = long;
      */

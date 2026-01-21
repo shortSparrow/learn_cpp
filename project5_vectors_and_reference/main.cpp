@@ -28,7 +28,7 @@ void printArrayOfArray(const RefVector& v) {
 
 
 int main() {
-    // // Тут просто створююється незалежна копія
+    // // Тут просто створюється незалежна копія
     // std::vector v1 {1,2,3};
     // std::vector v2 {v1, {4,5,6}};
     // printArrayOfArray(v2); // 1 2 3   4 5 6

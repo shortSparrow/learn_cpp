@@ -61,9 +61,9 @@ void print(Dollars d) {
 int main() {
     printFoo(5); //
     /**
-     * Неочікувано цей код працює бо у C++ є type conversion, тут у printFoo ми преедаємо 5, а він очікує Foo,
+     * Неочікувано цей код працює бо у C++ є type conversion, тут у printFoo ми передаємо 5, а він очікує Foo,
      * тож він викликає Foo(5) і оскільки у Foo є конструктор з параметром int, то у нас ініціалізується Foo.
-     * Технічно тут вдібувається convertion з int до Foo
+     * Технічно тут відбувається conversion з int до Foo
      */
 
 
@@ -71,7 +71,7 @@ int main() {
     /**
      * Неочікувано, але це це працює, тому що є правило "Only one user-defined conversion may be applied"
      * В цьому випадку C-style string конвертується у string_view (1 type conversion) і потім намагається
-     * коніертувати string_view у Employee, але оскільки це вже другий conversion то видає помилку
+     * конвертувати string_view у Employee, але оскільки це вже другий conversion то видає помилку
      */
 
     // 1 Спосіб це виправити це передати string_view напряму
@@ -84,7 +84,7 @@ int main() {
 
 
     /**
-     * Ми можемо використовувати ключове слово explicit, щоб повідомити компілятору, не слід використовувати convertion для конструктора
+     * Ми можемо використовувати ключове слово explicit, щоб повідомити компілятору, не слід використовувати conversion для конструктора
      */
     print(5); // compilation error because Dollars(int) is explicit
 
@@ -93,7 +93,7 @@ int main() {
 
     /**
      * Best practice
-     * Робити кожний constrtuctor explicite by default, а якзо буде потреба то прибирати excplicit
+     * Робити кожний constructor explicit by default, а якщо буде потреба то прибирати explicit
      */
 
     return 0;

@@ -5,7 +5,7 @@ class Timer {
 private:
     // Type aliases to make accessing nested type easier
     using Clock = std::chrono::steady_clock;
-    using Second = std::chrono::duration<double, std::ratio<1> >; // std::ratio<1> говорить що викорстовуємо секунди
+    using Second = std::chrono::duration<double, std::ratio<1> >; // std::ratio<1> говорить що використовуємо секунди
 
     std::chrono::time_point<Clock> m_beg;
 

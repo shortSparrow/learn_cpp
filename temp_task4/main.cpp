@@ -74,7 +74,7 @@ int main() {
 
             case 'M':
             case 'm': {
-                // Оскільки і sum і numbers.size() є цілочисельним типами, то їх ділення теж дасть цілочисленний результат.
+                // Оскільки і sum і numbers.size() є цілочисельним типами, то їх ділення теж дасть цілочисельний результат.
                 // Щоб результат був double, треба, щоб хоча б один з операндів був float/double, саме тому ми й приводимо sum до double
                 const double mean {static_cast<double>(sum) / numbers.size()};
 
