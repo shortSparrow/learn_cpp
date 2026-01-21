@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.1)
+project(temp_task22_own_IntArary_overload_operator_and_deep_copy)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(temp_task22_own_IntArary_overload_operator_and_deep_copy main.cpp)
