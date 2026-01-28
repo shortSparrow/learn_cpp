@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.1)
+project(project53_weak_pointer_and_circular_dependencies)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project53_weak_pointer_and_circular_dependencies main.cpp)
