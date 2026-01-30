@@ -1,6 +1,11 @@
 #include <iostream>
 #include <memory>
 
+/**
+ * std::shared_ptr is the smart pointer class used when you need multiple objects accessing the same resource.
+ * The resource will not be destroyed until the last std::shared_ptr managing it is destroyed.
+ */
+
 class Resource {
 public:
     Resource() { std::cout << "Resource acquired\n"; }
@@ -66,7 +71,7 @@ int main() {
      * Killing another shared pointer
      * Resource destroyed
      *
-     * З початку ресур було створено (Resource acquired), потім сторено share_ptr, потім виходимо
+     * З початку ресурс було створено (Resource acquired), потім створено share_ptr, потім виходимо
      * з scope і shared_ptr видаляється (Killing one shared pointer) потім відпрацьовує
      * вивід (Killing another shared pointer) і в кінці функція закінчує виконання і вмирає сам
      * Resource і перший shared_ptr теж знищується (Resource destroyed)
@@ -86,11 +91,11 @@ int main() {
      * Killing another shared pointer
      * Resource destroyed
      *
-     * Тут на відміну від прикладу вище було сторено незалежну копію для другого share pointer,
-     * ми створили її з Resorce, а не з першого share pointer, тож наш Resource двічі знизеться і
+     * Тут на відміну від прикладу вище було створено незалежну копію для другого share pointer,
+     * ми створили її з Resource, а не з першого share pointer, тож наш Resource двічі знищиться і
      * на деяких машина це може призвести до крашу (на мої призвело), тому такої поведінки слід уникати.
-     * До тогож це не буде класичний exeption який можна відловити у try...catch, це буде "Undefined Behavior".
-     * Якщо нам треба копія то треба її робити не з оргинінального pointer, а уже зі створеного shared pointer
+     * До того ж це не буде класичний exception який можна відловити у try...catch, це буде "Undefined Behavior".
+     * Якщо нам треба копія то треба її робити не з оригінального pointer, а уже зі створеного shared pointer
      */
 
     /**
