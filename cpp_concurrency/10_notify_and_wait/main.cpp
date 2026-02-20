@@ -88,11 +88,11 @@ void data_processing_thread() {
         std::unique_lock<std::mutex> lk(mut); // .lock() викликається одразу, тому наш м'ютекс заблокований (lock)
 
         // wait() робить три речі:
-        // 1. Перевіряє умову (лямбда-функція).
-        // 2. Якщо false — відпускає (.unlock()) м'ютекс і засинає.
-        // 3. Коли приходить notify_one, прокидається, закриває м'ютекс і перевіряє ще раз, і так по колу, доки не буде true.
+        // 1. Перевіряє умову (лямбда-функцію).
+        // 2. Якщо false — відпускає м'ютекс (.unlock()) і засинає.
+        // 3. Коли приходить notify_one, прокидається, блокує м'ютекс і перевіряє ще раз, і так по колу, доки не буде true.
         data_cond.wait(lk, [] {
-            return !data_queue.empty() || finished; // Якщо повертає false, то wait() розблоковує мьютекс і переводить потік у стан блокування або очікування
+            return !data_queue.empty() || finished; // Якщо повертає false, то wait() розблоковує м'ютекс і переводить потік у стан блокування або очікування
         });
 
         if (data_queue.empty() && finished) {
@@ -108,10 +108,6 @@ void data_processing_thread() {
         std::cout << "[Consumer] Data processed: " << data.value << std::endl;
     }
 }
-
-/**
- *
- */
 
 
 
