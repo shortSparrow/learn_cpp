@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.1)
+project(project58_diamond_problem_and_virtual_base_class)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project58_diamond_problem_and_virtual_base_class main.cpp)
