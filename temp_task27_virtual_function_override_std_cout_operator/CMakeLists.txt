@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.2)
+project(temp_task27_virtual_function_override_std_cout_operator)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(temp_task27_virtual_function_override_std_cout_operator main.cpp)
