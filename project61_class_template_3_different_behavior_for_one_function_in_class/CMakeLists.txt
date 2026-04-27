@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.2)
+project(project61_class_template_3_different_behavior_for_one_function_in_class)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project61_class_template_3_different_behavior_for_one_function_in_class main.cpp)

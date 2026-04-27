@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.2)
+project(project61_class_template_2_different_behavior_depends_on_type)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project61_class_template_2_different_behavior_depends_on_type main.cpp)
