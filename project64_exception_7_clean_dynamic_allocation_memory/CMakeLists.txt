@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.2)
+project(project64_exception_7_clean_dynamic_allocation_memory)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project64_exception_7_clean_dynamic_allocation_memory main.cpp)

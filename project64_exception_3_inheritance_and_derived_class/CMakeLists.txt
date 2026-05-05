@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.2)
+project(project64_exception_3_inheritance_and_derived_class)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project64_exception_3_inheritance_and_derived_class main.cpp)
