@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.2)
+project(project66_cout_stream_flags_and_manipulators)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project66_cout_stream_flags_and_manipulators main.cpp)
