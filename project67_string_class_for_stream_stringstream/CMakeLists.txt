@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.2)
+project(project67_string_class_for_stream_stringstream)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(project67_string_class_for_stream_stringstream main.cpp)
