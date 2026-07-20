@@ -220,7 +220,9 @@ Iterator parallel_find_impl(Iterator first, Iterator last, MatchType match, std:
         unsigned long const length=std::distance(first,last);
         unsigned long const min_per_thread=25;
 
-        if(length<(2*min_per_thread)) {
+        // множимо на 2, щоб зрозуміти чи варто розбивати масив на 2, бо якщо буде 40 елементів то це буде 25 на один
+        // потік та 15 на другий, отже не ефективно, треба щоб на кожен припадало мінімум 25 елементів. 
+        if(length<(2*min_per_thread)) { 
             for(;(first!=last) && !done.load();++first) {
                 if(*first==match) {
                     done=true;
